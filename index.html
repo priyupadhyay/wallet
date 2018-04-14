@@ -265,20 +265,10 @@
                                 <!-- <canvas id="chart" width="600" height="400"> </canvas> -->
                                 <canvas id="donut" width="400" height="400"></canvas>
                                 <div class="donut-inner">
-                                    <h5>47 / 60 st</h5>
-                                    <span>(30 / 25 st)</span>
+                                    <h5>$0.00 </h5>
+                                    
                                 </div>
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-timer"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -420,32 +410,28 @@ function graph() {
 
 
 
-var donutEl = document.getElementById("donut").getContext("2d");
-var donut = new Chart(donutEl).Doughnut(
-    // Datas
-    [
-        {
-            value: 300,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            label: "Balance"
-        }
-    ],
-    // Options
-    {
-        segmentShowStroke : true,
-        segmentStrokeColor : "#fff",
-        segmentStrokeWidth : 2,
-        percentageInnerCutout : 50,
-        animationSteps : 100,
-        animationEasing : "easeOutBounce",
-        animateRotate : true,
-        animateScale : false,
-        responsive: true,
-        maintainAspectRatio: true,
-        showScale: true,
-        animateScale: true
-    });
+var config = {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [
+                100
+            ],
+            backgroundColor: [
+                "#F7464A"
+            ],
+        }]
+    },
+    options: {
+        responsive: true
+    }
+};
+
+window.onload = function() {
+    var ctx = document.getElementById("donut").getContext("2d");
+    window.myPie = new Chart(ctx, config);
+};
+
     });
     </script>
 
