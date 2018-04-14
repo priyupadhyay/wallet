@@ -252,7 +252,7 @@
                             <div class="content">
                                 <!-- <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div> -->
                                 <!-- <canvas id="chart" width="600" height="400"> </canvas> -->
-                                <!-- <canvas id="donut" width="400" height="400"></canvas> -->
+                                <!-- <canvas id="donut" width="200"></canvas> -->
                                 
                                     <h1>$0.00 </h1>
                                   
@@ -510,8 +510,10 @@ function graph() {
       }
     });
   });
-}  
+  }
 
+
+    });
 
 
 
@@ -523,21 +525,26 @@ var config = {
                 100
             ],
             backgroundColor: [
-                "#F7464A"
+                "#337ab7"
             ],
         }]
     },
     options: {
-        responsive: true
+        responsive: true,
+        legend: {
+            display: false,
+        }
+    },
+    centerText: {
+        display: true,
+        text: "$ 0.00"
     }
-};
+    }
 
 window.onload = function() {
     var ctx = document.getElementById("donut").getContext("2d");
     window.myPie = new Chart(ctx, config);
 };
-
-    });
     </script>
 
 </html>
