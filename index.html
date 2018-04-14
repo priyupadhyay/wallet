@@ -31,8 +31,26 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
+
+<style type="text/css" media="screen">
+.donut-inner {
+   margin-top: -100px;
+   margin-bottom: 100px;
+}
+.donut-inner h5 {
+   margin-bottom: 5px;
+   margin-top: 0;
+}
+.donut-inner span {
+   font-size: 12px;
+}    
+</style>
 </head>
+
+
 <body>
 
 <div class="wrapper">
@@ -46,7 +64,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    SHEQ Coin
+                    SHEQ Wallet
                 </a>
             </div>
 
@@ -238,41 +256,21 @@
                 </div>
                 
                 <div class="row">
-                      
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
-                            </div>
-                            <div class="content">
-                                    <canvas id="chart" width="600" height="400"> </canvas>
-                                <div id="chartHours" class="ct-chart"></div>
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-reload"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+
                     <div class="col-md-6">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+                                <h4 class="title">Your Balances</h4>
+                                <!-- <p class="category">Last Campaign Performance</p> -->
                             </div>
                             <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
+                                <!-- <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div> -->
+                                <!-- <canvas id="chart" width="600" height="400"> </canvas> -->
+                                <canvas id="donut" width="400" height="400"></canvas>
+                                <div class="donut-inner">
+                                    <h5>47 / 60 st</h5>
+                                    <span>(30 / 25 st)</span>
+                                </div>
                                 <div class="footer">
                                     <div class="chart-legend">
                                         <i class="fa fa-circle text-info"></i> Open
@@ -287,28 +285,28 @@
                             </div>
                         </div>
                     </div>
+                      
                     <div class="col-md-6">
-                        <div class="card ">
+                        <div class="card">
                             <div class="header">
-                                <h4 class="title">2015 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">Price Charts</h4>
+                                <p class="category">24 Hours performance</p>
                             </div>
                             <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
-
+                                    <canvas id="chart" width="600" height="400"> </canvas>
+                                <!-- <div id="chartHours" class="ct-chart"></div> -->
                                 <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="ti-check"></i> Data information certified
+                                        <i class="ti-server"></i> BTC =  ₹526,315.78
+                                        <i class="ti-server"></i> ETH =  ₹33,062.28
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -487,7 +485,7 @@
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="assets/js/demo.js"></script>
 
-
+<!-- 
 	<script type="text/javascript">
     	$(document).ready(function(){
 
@@ -503,8 +501,10 @@
             });
 
     	});
-    </script>
+    </script> -->
 <script>
+    $(document).ready(function(){
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var LINEDATA = [];
@@ -515,7 +515,7 @@ graph();
 setInterval("graph()", 30000);
 
 function graph() {
-  axios.get('https://api.coindesk.com/v1/bpi/historical/close.json?start=' + moment(new Date()).subtract(1, 'month').format('YYYY-MM-DD') + '&end=' + moment(new Date()).format('YYYY-MM-DD')).then(function (response) {
+  axios.get('https://api.coindesk.com/v1/bpi/historical/close.json?start=' + moment(new Date()).subtract(15, 'days').format('YYYY-MM-DD') + '&end=' + moment(new Date()).format('YYYY-MM-DD')).then(function (response) {
     LINEDATA = _extends({}, response.data.bpi);
     data = Object.keys(LINEDATA).map(function (key) {
       return LINEDATA[key];
@@ -536,7 +536,37 @@ function graph() {
     });
   });
 }  
-    
+
+
+
+
+var donutEl = document.getElementById("donut").getContext("2d");
+var donut = new Chart(donutEl).Doughnut(
+    // Datas
+    [
+        {
+            value: 300,
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "Balance"
+        }
+    ],
+    // Options
+    {
+        segmentShowStroke : true,
+        segmentStrokeColor : "#fff",
+        segmentStrokeWidth : 2,
+        percentageInnerCutout : 50,
+        animationSteps : 100,
+        animationEasing : "easeOutBounce",
+        animateRotate : true,
+        animateScale : false,
+        responsive: true,
+        maintainAspectRatio: true,
+        showScale: true,
+        animateScale: true
+    });
+    });
     </script>
 
 </html>
