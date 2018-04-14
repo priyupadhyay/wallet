@@ -154,6 +154,7 @@
             </div>
         </nav>
 
+     
 
         <div class="content">
             <div class="container-fluid">
@@ -164,16 +165,17 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-warning text-center">
-                                            <i class="ti-arrow-up"></i>
+                                            <a class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal"><i class="ti-arrow-up"></i></a>
                                             <p>Send coin</p>
-                                            <a>Send</a>
+                                            <a class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal">Send</a>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-xs-5">
                                             <div class="icon-big icon-warning text-center">
-                                                <i class="ti-arrow-down"></i>
+                                               <a class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal1"> <i class="ti-arrow-down"></i></a>
                                                 <p>Request for coin</p>
-                                                <a>Request</a>
+                                                <a class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal1">Request</a>
                                             </div>
                                         </div>
                                    
@@ -234,6 +236,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                       
                     <div class="col-md-12">
@@ -341,6 +344,123 @@
 
     </div>
 </div>
+<div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+               <h4 class="modal-title" id="myModalLabel">Send Bitcoin</h4>
+             </div>
+             <div class="modal-body">
+                    <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Currency</label>
+                                <select class="form-control border-input">
+                                        <option>Ether</option>
+                                        <option>Bitcoin</option>
+                                      
+                                    </select>                                
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>To</label>
+                                    <input type="text" class="form-control border-input" placeholder="" >                              
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Amount</label>
+                                        <input type="text" class="form-control border-input" placeholder="" >                              
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Amount - INR</label>
+                                            <input type="text" class="form-control border-input" placeholder="">                               
+                                        </div>
+                                    </div><br>
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea class="form-control border-input"></textarea>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Fee Type</label>
+                                                    <select class="form-control border-input">
+                                                            <option>Regular</option>
+                                                            <option>Priority</option>
+                                                          
+                                                        </select>                                
+                                                </div>
+                                            </div>
+              
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Continue</button>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div id="GSCCModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                   <h4 class="modal-title" id="myModalLabel">Request Bitcoin</h4>
+                 </div>
+                 <div class="modal-body">
+                        <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Currency</label>
+                                    <select class="form-control border-input">
+                                            <option>Ether</option>
+                                            <option>Bitcoin</option>
+                                          
+                                        </select>                                
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Copy & Share Address</label>
+                                        <input type="text" class="form-control border-input" placeholder="" >                              
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Amount</label>
+                                            <input type="text" class="form-control border-input" placeholder="" >                              
+                                        </div>
+                                       
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Amount - INR</label>
+                                                <input type="text" class="form-control border-input" placeholder="">                               
+                                            </div>
+                                        </div><br>
+                                        <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control border-input"></textarea>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                 </div>
+                 <div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Continue</button>
+                 </div>
+               </div>
+             </div>
+           </div>
 
 
 </body>
